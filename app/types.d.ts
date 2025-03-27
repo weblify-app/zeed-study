@@ -10,6 +10,11 @@ declare global {
             logo:    string;
         }>
     }
+    type Country = {
+        id: number;
+        sort: number | null;
+        name: string;
+    }
   }
   
   export {};
