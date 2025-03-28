@@ -1,3 +1,6 @@
+import { useCmsApi } from "../utils/useCmsApi";
+
 export default defineEventHandler(async (_event) => {
-  return await $fetch<{data: NamedData[]}>("https://cms.zeedi.co/items/course_levels");
+  const cmsApi = useCmsApi();
+  return await cmsApi<{data: NamedData[]}>("/items/course_levels");
 })

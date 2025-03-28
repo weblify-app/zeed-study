@@ -1,8 +1,27 @@
-@import "tailwindcss" theme(static);
+@import "tailwindcss";
 @import "@nuxt/ui";
 
-@theme {
+@theme static {
+
+  --color-blue-50: #effafc;
+  --color-blue-100: #d5f0f8;
+  --color-blue-200: #b1e0f0;
+  --color-blue-300: #7bcae5;
+  --color-blue-400: #3ea9d2;
+  --color-blue-500: #2493c0;
+  --color-blue-600: #1f719b;
+  --color-blue-700: #205d7e;
+  --color-blue-800: #224d68;
+  --color-blue-900: #214158;
+  --color-blue-950: #10293c;
+  
+  
   --font-sans: 'Public Sans', sans-serif;
+  --ui-bg: var(--color-neutral-50);
+  --ui-text: var(--color-neutral-900);
+  --ui-text-muted: var(--color-neutral-600);
+  --ui-border: var(--color-primary-200);
+  --ui-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 body{

@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import TopNavbar from '~/components/TopNavbar.vue';
-const colorMode = useColorMode();
-colorMode.preference = 'light';
 </script>
 <template>
   <UApp>
-    <!-- <NuxtLoadingIndicator/> -->
+    <NuxtLoadingIndicator/>
     <header>
       <TopNavbar />
     </header>

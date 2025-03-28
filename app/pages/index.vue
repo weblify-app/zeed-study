@@ -1,21 +1,8 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'home-page-layout'
-});
 
+const {data} = await useFetch("/api/home", {key: 'home'});
 
 </script>
 <template>
-  <div class="flex flex-col items-center justify-center gap-4 h-screen">
-    <h1 class="font-bold text-2xl text-(--ui-primary)">
-      Nuxt UI v3
-    </h1>
-
-    <div class="flex items-center gap-2">
-      Home page
-      <NuxtLink to="/institutions" class="text-(--ui-primary)">
-        Institutions
-      </NuxtLink>
-    </div>
-  </div>
+    <div v-html="data?.data.body"></div>
 </template>
