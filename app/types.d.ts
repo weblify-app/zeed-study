@@ -1,13 +1,24 @@
 declare global {
+    type NamedData = {
+        id: number;
+        sort: number | null;
+        name: string;
+    }
+    type CourseLevelsOffered = {
+        id:               number;
+        Institutions_id:  number;
+        course_levels_id: NamedData;
+    }
     type Institutions = {
         data: Array<{
             id:      number;
             status:  string;
-            sort:    null;
+            sort:    number | null;
             name:    string;
-            country: number;
-            city:    null;
+            country: NamedData;
+            city:    string;
             logo:    string;
+            course_levels_offered: CourseLevelsOffered[];
         }>
     }
   }
