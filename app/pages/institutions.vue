@@ -2,7 +2,7 @@
 definePageMeta({
   layout: 'default'
 });
-const { data: institutions } = await useFetch<Institutions>('/api/institutions');
+const { data: institutions } = await useFetch<Institutions>('/api/institutions', {key: 'institutions'});
 const { data: filterData, error } = await useAsyncData("filter-data", async () => {
   const [countries, course_levels] = await Promise.all([
     $fetch("/api/countries"),

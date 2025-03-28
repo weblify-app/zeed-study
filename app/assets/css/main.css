@@ -1,8 +1,13 @@
-@import "tailwindcss" theme(static);
+@import "tailwindcss";
 @import "@nuxt/ui";
 
 @theme {
   --font-sans: 'Public Sans', sans-serif;
+  --ui-bg: var(--color-neutral-50);
+  --ui-text: var(--color-neutral-900);
+  --ui-text-muted: var(--color-neutral-600);
+  --ui-border: var(--color-neutral-200);
+  --ui-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 body{
