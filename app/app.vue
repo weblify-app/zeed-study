@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import TopNavbar from '~/components/TopNavbar.vue';
-const colorMode = useColorMode();
-colorMode.value = 'light';
-colorMode.forced = true;
 </script>
 <template>
   <UApp>
