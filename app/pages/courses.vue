@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TableColumn } from '@nuxt/ui'
+
 useHead({
   title: 'Courses',
   meta: [
@@ -8,19 +10,49 @@ useHead({
     }
   ]
 });
+
+const {data: courses, error} = await useFetch<CmsResult<Course>>('/api/courses', {key: 'courses'});
+
+if(error.value){
+  createError({statusCode: error.value.statusCode, statusMessage: error.value.message})
+}
+
+const columns: TableColumn<Course>[] = [
+  {
+    accessorKey: 'title',
+    header: 'Title',
+    size: 100
+  },
+  {
+    accessorKey: 'course_level.name',
+    header: 'Course Level',
+  },
+  {
+    accessorKey: 'subjec_area.name',
+    header: 'Subject Area',
+  },
+  {
+    accessorKey: 'institution.name',
+    header: 'Institution',
+  }
+];
+
+const globalFilter = ref('');
+
 </script>
 <template>
   <div>
     <aside>
-      <h2>Filter Courses</h2>
+      <!-- <h2>Filter Courses</h2> -->
     </aside>
-
-
-  <UCard>
-    <div class="grid gap-2">
-      <USkeleton class="h-4 w-[250px]" />
-      <USkeleton class="h-4 w-[200px]" />
-    </div>
-  </UCard>
+    <main>
+      <UInput v-model="globalFilter" placeholder="Search" class="mb-4" />
+      <UTable
+        v-model:global-filter="globalFilter" 
+        :data="courses?.data" 
+        :columns="columns" 
+        class="flex-1" 
+      />
+    </main>
     </div>
 </template>

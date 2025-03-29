@@ -1,15 +1,20 @@
 declare global {
-    type CmsFilterResult<T> = {
-      data: T[];
-    }
+  type CmsResult<T> = {
+    data: T[];
+    errors?: Array<{
+        message: string;
+        extensions: {
+            reason: string;
+            code: string;
+        }
+    }>;
+  };
   type CmsPageContent = {
-    data: {
-      id: number;
-      status: string;
-      title: string;
-      slug: string;
-      body: string;
-    };
+    id: number;
+    status: string;
+    title: string;
+    slug: string;
+    body: string;
   };
   type NamedData = {
     id: number;
@@ -21,18 +26,28 @@ declare global {
     Institutions_id: number;
     course_levels_id: NamedData;
   };
-  type Institutions = {
-    data: Array<{
-      id: number;
-      status: string;
-      sort: number | null;
-      name: string;
-      country: NamedData;
-      city: string;
-      logo: string;
-      course_levels_offered: CourseLevelsOffered[];
-    }>;
+  type Institution = {
+    id: number;
+    status: string;
+    sort: number | null;
+    name: string;
+    country: NamedData;
+    city: string;
+    logo: string;
+    course_levels_offered: CourseLevelsOffered[];
   };
+  type Course = {
+    id:                  number;
+    status:              string;
+    sort:                number |null;
+    title:               string;
+    english_requirement: string;
+    description:         string;
+    intake_months:       string[];
+    course_level:        NamedData;
+    subjec_area:         NamedData;
+    institution:         Institution;
+  }
 }
 
 export {};

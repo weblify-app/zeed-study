@@ -2,7 +2,7 @@ import { useCmsApi } from "../utils/useCmsApi";
 
 export default defineEventHandler(async (_event) => {
   const cmsApi = useCmsApi();
-  return await cmsApi("/items/Institutions", {
+  const result = await cmsApi<CmsResult<Institution[]>>("/items/Institutions", {
     params: {
       "filter[status][_eq]": "published",
       "fields[]": [
@@ -12,4 +12,13 @@ export default defineEventHandler(async (_event) => {
       ],
     },
   });
+
+  if(result.data.length > 0){
+    return result;
+  }
+
+  return {
+    success: false,
+    error: "Institutions not found"
+  }
 });
