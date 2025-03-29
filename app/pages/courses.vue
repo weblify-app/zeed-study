@@ -11,7 +11,7 @@ useHead({
   ]
 });
 
-const {data: courses, error} = await useFetch('/api/courses', {key: 'courses'});
+const {data: courses, error} = await useFetch<CmsResult<Course>>('/api/courses', {key: 'courses'});
 
 if(error.value){
   createError({statusCode: error.value.statusCode, statusMessage: error.value.message})
