@@ -1,9 +1,20 @@
 <script setup lang="ts">
 
-const {data} = await useFetch("/api/home", {key: 'home'});
+const htmlContent = ref('loading...');
+
+const {data, error} = await useFetch<CmsPageContent>("/api/pages/home", {
+  key: 'home'
+});
+
+if(error.value){
+  createError({statusCode: error.value.statusCode, statusMessage: error.value.message})
+}
+
+if(data.value){
+  htmlContent.value = data.value.body
+}
 
 </script>
 <template>
-  <div v-html="data.body">
-  </div>
+  <div v-html="htmlContent"></div> <!--eslint-disable-line-->
 </template>

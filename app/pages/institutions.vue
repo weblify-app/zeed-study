@@ -3,8 +3,8 @@ const { data: institutions } = await useFetch<Institutions>(
   "/api/institutions",
   { key: "institutions" }
 );
-const { data: filterData, error } = await useAsyncData(
-  "filter-data",
+const { data: extraData, error } = await useAsyncData(
+  "extra-data",
   async () => {
     const [countries, course_levels] = await Promise.all([
       $fetch("/api/countries"),
@@ -13,18 +13,22 @@ const { data: filterData, error } = await useAsyncData(
     return { countries, course_levels };
   },
   {
-    getCachedData: (key, nuxtApp) => {
-      const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key];
-      return data;
-    },
+    getCachedData: getPageData,
   }
 );
 
+if (error.value) {
+  createError({
+    statusCode: error.value.statusCode,
+    statusMessage: error.value.message,
+  });
+}
+
 const countries = computed(() => [
-  filterData.value?.countries.data.map((country) => country.name),
+  extraData.value?.countries.data.map((country) => country.name),
 ]);
 const course_levels = computed(() =>
-  filterData.value?.course_levels.data.map((level) => level.name)
+  extraData.value?.course_levels.data.map((level) => level.name)
 );
 
 const filters = ref({

@@ -1,8 +1,18 @@
 <script setup lang="ts">
+import type { TooltipProps, ToastProps } from '@nuxt/ui';
 import TopNavbar from '~/components/TopNavbar.vue';
+
+const tooltipConfig: TooltipProps = {
+  delayDuration: 0
+}
+
+const toastConfig: ToastProps = {
+  duration: 3000
+}
+
 </script>
 <template>
-  <UApp>
+  <UApp :tooltip="tooltipConfig" :toaster="toastConfig">
     <NuxtLoadingIndicator/>
     <header>
       <TopNavbar />
