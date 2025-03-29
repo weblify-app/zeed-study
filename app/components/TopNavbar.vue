@@ -36,9 +36,10 @@ const items = ref<NavigationMenuItem[][]>([
             <UNavigationMenu :items="items" class="hidden md:flex" />
             <div class="mr-4">
                 <USwitch 
-                    v-model="isLightMode"
+                    :model-value="colorMode.preference === 'light'"
                     unchecked-icon="lucide:moon" 
                     checked-icon="lucide:sun" 
+                    @update:model-value="colorMode.preference = $event ? 'light' : 'dark'"
                 />
             </div>
             <UDropdownMenu :items="items" :ui="{ content: 'w-48' }" class="md:hidden mr-4">
