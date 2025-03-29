@@ -1,5 +1,8 @@
 declare global {
-  type HtmlContentData = {
+    type CmsFilterResult<T> = {
+      data: T[];
+    }
+  type CmsPageContent = {
     data: {
       id: number;
       status: string;
