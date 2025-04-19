@@ -7,8 +7,7 @@ export default defineEventHandler(async (_event) => {
       "filter[status][_eq]": "published",
       "fields[]": [
         "*",
-        "country.*",
-        "course_levels_offered.course_levels_id.*"
+        "country.*"
       ],
     },
   });
