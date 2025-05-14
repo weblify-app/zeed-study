@@ -8,10 +8,16 @@ export default defineEventHandler(async (_event) => {
       "fields[]": [
         "*",
         "country.*",
-        "course_levels_offered.course_levels_id.*"
       ],
     },
   });
+
+  if(result.error){
+    return {
+      success: false,
+      error: result.error
+    }
+  }
 
   if(result.data.length > 0){
     return result;
