@@ -2,26 +2,31 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
-  modules: [
-    '@nuxt/ui',
-    '@nuxt/eslint'
-  ],
-  css: ['~/assets/css/main.css'],
-  app:{
+  modules: ["@nuxt/ui", "@nuxt/eslint"],
+  css: ["~/assets/css/main.css"],
+  app: {
     head: {
-      htmlAttrs:{
-        lang: 'en',
-      }
-    }
+      htmlAttrs: {
+        lang: "en",
+      },
+    },
   },
-  colorMode:{
-    preference: 'light'
+  nitro: {
+    preset: "cloudflare_module",
+
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true,
+    },
+  },
+  colorMode: {
+    preference: "light",
   },
   future: {
-    compatibilityVersion: 4
+    compatibilityVersion: 4,
   },
   experimental: {
-    payloadExtraction: true
+    payloadExtraction: true,
   },
-  compatibilityDate: '2025-03-28'
-})
+  compatibilityDate: "2025-03-28",
+});

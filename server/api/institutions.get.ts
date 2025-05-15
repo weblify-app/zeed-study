@@ -12,6 +12,13 @@ export default defineEventHandler(async (_event) => {
     },
   });
 
+  if(result.error){
+    return {
+      success: false,
+      error: result.error
+    }
+  }
+
   if(result.data.length > 0){
     return result;
   }

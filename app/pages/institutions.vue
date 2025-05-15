@@ -124,14 +124,6 @@ useHead({
               <li>
                 <UIcon name="lucide:map-pin" /> {{ institution.country.name }}
               </li>
-              <li>
-                <UIcon name="lucide:book-a" />
-                {{
-                  institution.course_levels_offered
-                    .map((level) => level.course_levels_id.name)
-                    .join(", ")
-                }}
-              </li>
             </ul>
           </div>
         </UCard>
