@@ -9,7 +9,7 @@
     "preview": "pnpm run build && wrangler dev",
     "wrangler-dev": "wrangler dev",
     "postinstall": "nuxt prepare",
-    "deploy": "pnpm run build && wrangler deploy",
+    "deploy": "npx wrangler deploy",
 		"cf-typegen": "wrangler types",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
